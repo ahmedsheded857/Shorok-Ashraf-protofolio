@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shorouk Ashraf - Graphic Designer</title>
+  <!-- Include Font Awesome for Social Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Include Fancybox CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+  <style>
+    /* Reset and Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    /* Header Styles */
+    .main-header {
+      background-color: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      padding: 15px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .main-header .container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo a {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #800080; /* بنفسجي */
+    }
+    
+    /* Hamburger Menu */
+    .menu-icon {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #fff;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background-image: url('./images/cad0a47b2ae835f700cf7022fe201eb0.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      padding: 100px 20px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: left;
+      margin-top: 70px;
+    }
+    .hero-content {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .profile-img img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      object-fit: cover;
+    }
+    .hero-text {
+      max-width: 600px;
+    }
+    .hero-text h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    .hero-text p {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .cta-btn {
+      background-color: #800080; /* بنفسجي */
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 18px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .cta-btn:hover {
+      background-color: #333;
+      color: #fff;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px 0;
+        gap: 10px;
+        align-items: center;
+        z-index: 999;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-text h1 {
+        font-size: 36px;
+      }
+      .hero-text p {
+        font-size: 20px;
+      }
+      .profile-img img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+    
+/* قسم المشاريع */
+.portfolio {
+  padding: 60px 20px;
+  background-color: #121212;
+  text-align: center;
+}
+.portfolio h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #fff9f9;
+}
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.project-card {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid #800080;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  height: 300px; /* ارتفاع ثابت للبطاقات */
+  position: relative; /* لتحديد موضع العنوان */
+}
+.project-card img {
+  width: 100%;
+  height: 100%; /* الصورة تملأ الديف بالكامل */
+  object-fit: cover; /* الحفاظ على نسبة الصورة */
+  display: block;
+}
+.project-card h3 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* خلفية سوداء شفافة */
+  color: #fff;
+  margin: 0;
+  padding: 10px;
+  font-size: 18px;
+}
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 1024px) {
+  .projects-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+}
+    
+    /* Contact Section */
+    .contact {
+      padding: 40px 20px;
+      text-align: center;
+      background-color: #121212;
+      color: #fff;
+    }
+    .contact h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .social-links a {
+      font-size: 40px;
+      transition: transform 0.3s ease;
+    }
+    .social-links a:hover {
+      transform: scale(1.2);
+    }
+    .facebook { color: #3b5998; }
+    .linkedin { color: #0e76a8; }
+    .whatsapp { color: #25d366; }
+    
+    /* Footer */
+    .footer {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    .footer .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+<!-- Header -->
+<header class="main-header">
+  <div class="container">
+    <div class="logo">
+      <a href="#">Shorouk Ashraf</a>
+    </div>
+    <nav>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      <ul id="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="profile-img">
+      <img src="./images/_MG_0093.JPG" alt="Shorouk Ashraf">
+    </div>
+    <div class="hero-text">
+      <h1>Shorouk Ashraf</h1>
+      <p>Where creativity meets social media, I design innovative graphics that capture attention.</p>
+      <a href="#portfolio" class="cta-btn">Explore My Work</a>
+    </div>
+  </div>
+</section>
+  
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="portfolio">
+    <h2>My Projects</h2>
+    <div id="graphic" class="projects-container">
+      <div class="project-card">
+        <a href="./images/Shorok Ashraf/drinks/coffeeeeee.jpg" data-fancybox="project1" data-caption="تصميم جرافيك 1">
+          <img src="./images/Shorok Ashraf/drinks/coffeeeeee.jpg" alt="تصميم جرافيك 1">
+        </a>
+        <h3>Drinks</h3>
+        <a href="./images/Shorok Ashraf/drinks/kii.jpg" data-fancybox="project1"></a>
+        <a href="./images/Shorok Ashraf/drinks/lemoooon 2.jpg" data-fancybox="project1"></a>
+        <a href="./images/Shorok Ashraf/drinks/milkshake.jpg" data-fancybox="project1"></a>
+        <a href="./images/Shorok Ashraf/drinks/orangeeeeee.jpg" data-fancybox="project1"></a>
+      </div>
+      <div class="project-card">
+        <a href="./images/Shorok Ashraf/electronic/air pods.jpg" data-fancybox="project2" data-caption="تصميم جرافيك 2">
+          <img src="./images/Shorok Ashraf/electronic/air pods.jpg" alt="تصميم جرافيك 2">
+        </a>
+        <h3>Electronic</h3>
+        <a href="./images/Shorok Ashraf/electronic/camera.jpg" data-fancybox="project2"></a>
+        <a href="./images/Shorok Ashraf/electronic/watch (2).jpg" data-fancybox="project2"></a>
+      </div>
+      <div class="project-card">
+        <a href="./images/Shorok Ashraf/ice creameee/fav flavor.jpg" data-fancybox="project3" data-caption="تصميم جرافيك 3">
+          <img src="./images/Shorok Ashraf/ice creameee/fav flavor.jpg" alt="تصميم جرافيك 3">
+        </a>
+        <h3>Ice Cream</h3>
+        <a href="./images/Shorok Ashraf/ice creameee/kids.jpg" data-fancybox="project3"></a>
+        <a href="./images/Shorok Ashraf/ice creameee/new flavor.jpg" data-fancybox="project3"></a>
+        <a href="./images/Shorok Ashraf/ice creameee/on of.jpg" data-fancybox="project3"></a>
+        <a href="./images/Shorok Ashraf/ice creameee/strawbarry.jpg" data-fancybox="project3"></a>
+        <a href="./images/Shorok Ashraf/ice creameee/strawbarry2.jpg" data-fancybox="project3"></a>
+      </div>
+      <div class="project-card">
+        <a href="./images/Shorok Ashraf/logos/Graphic.jpg" data-fancybox="project4" data-caption="تصميم جرافيك 4">
+          <img src="./images/Shorok Ashraf/logos/Graphic.jpg" alt="تصميم جرافيك 4">
+        </a>
+        <h3>Logos</h3>
+        <a href="./images/Shorok Ashraf/logos/hr.jpg" data-fancybox="project4"></a>
+        <a href="./images/Shorok Ashraf/logos/markiting 2.jpg" data-fancybox="project4"></a>
+        <a href="./images/Shorok Ashraf/logos/pr 2.jpg" data-fancybox="project4"></a>
+        <a href="./images/Shorok Ashraf/logos/T&D.jpg" data-fancybox="project4"></a>
+        <a href="./images/Shorok Ashraf/logos/voice over.jpg" data-fancybox="project4"></a>
+      </div>
+      <div class="project-card">
+        <a href="./images/Shorok Ashraf/perfume/perfume 1.jpg" data-fancybox="project5" data-caption="تصميم جرافيك 5">
+          <img src="./images/Shorok Ashraf/perfume/perfume 1.jpg" alt="تصميم جرافيك 5">
+        </a>
+        <h3>Perfume</h3>
+        <a href="./images/Shorok Ashraf/perfume/perfume 2.jpg" data-fancybox="project5"></a>
+        <a href="./images/Shorok Ashraf/perfume/perfume 3.jpg" data-fancybox="project5"></a>
+        <a href="./images/Shorok Ashraf/perfume/perfume 4.png" data-fancybox="project5"></a>
+      </div>
+      <div class="project-card">
+        <a href="./images/Shorok Ashraf/resturant/chicken.jpg" data-fancybox="project6" data-caption="تصميم جرافيك 6">
+          <img src="./images/Shorok Ashraf/resturant/chicken.jpg" alt="تصميم جرافيك 6">
+        </a>
+        <h3>Restaurant</h3>
+        <a href="./images/Shorok Ashraf/resturant/hot dog.jpg" data-fancybox="project6"></a>
+        <a href="./images/Shorok Ashraf/resturant/location.jpg" data-fancybox="project6"></a>
+        <a href="./images/Shorok Ashraf/resturant/pasta من غير الجرجير.jpg" data-fancybox="project6"></a>
+        <a href="./images/Shorok Ashraf/resturant/pizza.jpg" data-fancybox="project6"></a>
+        <a href="./images/Shorok Ashraf/resturant/super delicios.jpg" data-fancybox="project6"></a>
+      </div>
+      <div class="project-card">
+        <a href="./images/Shorok Ashraf/shoeses/AIR MAX.jpg" data-fancybox="project7" data-caption="تصميم جرافيك 7">
+          <img src="./images/Shorok Ashraf/shoeses/AIR MAX.jpg" alt="تصميم جرافيك 7">
+        </a>
+        <h3>Shoes</h3>
+        <a href="./images/Shorok Ashraf/shoeses/confort.jpg" data-fancybox="project7"></a>
+        <a href="./images/Shorok Ashraf/shoeses/do it.jpg" data-fancybox="project7"></a>
+        <a href="./images/Shorok Ashraf/shoeses/foot.jpg" data-fancybox="project7"></a>
+        <a href="./images/Shorok Ashraf/shoeses/greeeen.jpg" data-fancybox="project7"></a>
+        <a href="./images/Shorok Ashraf/shoeses/jotrdan.jpg" data-fancybox="project7"></a>
+        <a href="./images/Shorok Ashraf/shoeses/nikee.jpg" data-fancybox="project7"></a>
+        <a href="./images/Shorok Ashraf/shoeses/orange.jpg" data-fancybox="project7"></a>
+        <a href="./images/Shorok Ashraf/shoeses/pink.jpg" data-fancybox="project7"></a>
+        <a href="./images/Shorok Ashraf/shoeses/shoooooes.jpg" data-fancybox="project7"></a>
+      </div>
+      <div class="project-card">
+        <a href="./images/Shorok Ashraf/sport/bmx.jpg" data-fancybox="project8" data-caption="تصميم جرافيك 8">
+          <img src="./images/Shorok Ashraf/sport/bmx.jpg" alt="تصميم جرافيك 8">
+        </a>
+        <h3>Sport</h3>
+        <a href="./images/Shorok Ashraf/sport/oo.jpg" data-fancybox="project8"></a>
+      </div>
+      <div class="project-card">
+        <a href="./images/Shorok Ashraf/tutorial/3d نمر.jpg" data-fancybox="project9" data-caption="تصميم جرافيك 9">
+          <img src="./images/Shorok Ashraf/tutorial/3d نمر.jpg" alt="تصميم جرافيك 9">
+        </a>
+        <h3>Tutorial</h3>
+        <a href="./images/Shorok Ashraf/tutorial/task 1.jpg" data-fancybox="project9"></a>
+        <a href="./images/Shorok Ashraf/tutorial/task 11.jpg" data-fancybox="project9"></a>
+        <a href="./images/Shorok Ashraf/tutorial/task 2.jpg" data-fancybox="project9"></a>
+        <a href="./images/Shorok Ashraf/tutorial/task 4.jpg" data-fancybox="project9"></a>
+        <a href="./images/Shorok Ashraf/tutorial/task 5.jpg" data-fancybox="project9"></a>
+        <a href="./images/Shorok Ashraf/tutorial/task 7.jpg" data-fancybox="project9"></a>
+        <a href="./images/Shorok Ashraf/tutorial/task 9.jpg" data-fancybox="project9"></a>
+        <a href="./images/Shorok Ashraf/tutorial/تااسك 3.jpg" data-fancybox="project9"></a>
+        <a href="./images/Shorok Ashraf/tutorial/تاسك 10.jpg" data-fancybox="project9"></a>
+        <a href="./images/Shorok Ashraf/tutorial/تاسك 12.jpg" data-fancybox="project9"></a>
+        <a href="./images/Shorok Ashraf/tutorial/تاسك 6.jpg" data-fancybox="project9"></a>
+      </div>
+      <div class="project-card">
+        <a href="./images/Shorok Ashraf/watches/smart 1.jpg" data-fancybox="project10" data-caption="تصميم جرافيك 10">
+          <img src="./images/Shorok Ashraf/watches/smart 1.jpg" alt="تصميم جرافيك 10">
+        </a>
+        <h3>Watches</h3>
+        <a href="./images/Shorok Ashraf/watches/smart 2.jpg" data-fancybox="project10"></a>
+        <a href="./images/Shorok Ashraf/watches/smart 3.jpg" data-fancybox="project10"></a>
+        <a href="./images/Shorok Ashraf/watches/smart 4.jpg" data-fancybox="project10"></a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Connect with Me</h2>
+    <div class="social-links">
+      <a href="https://www.facebook.com/shorok.ashraf.182" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.linkedin.com/in/shorok-ashraf-60974b343?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://api.whatsapp.com/send?phone=201148696534" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+</section>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Ahmed Abdelkhalek. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <!-- Include Fancybox JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+  <script>
+    // Toggle Mobile Menu
+    function toggleMenu() {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
